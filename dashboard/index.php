@@ -1,71 +1,9 @@
 <?php
 
-include_once "../cookie.php";
+include_once "../loginhelper.php";
 
-function CheckLogin()
-{
-    if (!isset($_COOKIE["SessionToken"]))
-    {
-        Login();
-        exit();
-    }
-
-    $token = $_COOKIE["SessionToken"];
-    if (!IsTokenAlive($token))
-    {
-        Login();
-        exit();
-    }
-
-    RenewToken($token);
-}
-
-function IsTokenAlive($token)
-{
-    $url = "https://api.chriswald.com/auth/istokenalive";
-    $data = array("SessionToken" => $token);
-
-    $options = array(
-        "http" => array(
-            "header"  => "Content-type: application/x-www-form-urlencoded\r\n",
-            "method"  => "POST",
-            "content" => http_build_query($data)
-        )
-    );
-
-    $context = stream_context_create($options);
-    $result = file_get_contents($url, false, $context);
-    $resultObj = json_decode($result);
-    return $resultObj->TokenIsAlive;
-}
-
-function RenewToken($token)
-{
-    $url = "https://api.chriswald.com/auth/renewtoken";
-    $data = array("SessionToken" => $token);
-
-    $options = array(
-        "http" => array(
-            "header"  => "Content-type: application/x-www-form-urlencoded\r\n",
-            "method"  => "POST",
-            "content" => http_build_query($data)
-        )
-    );
-
-    $context = stream_context_create($options);
-    $result = file_get_contents($url, false, $context);
-    $resultObj = json_decode($result);
-
-    MakeCookie($resultObj->SessionToken);
-}
-
-function Login()
-{
-    $url = "https://material.chriswald.com?r=" . urlencode((isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
-    echo "<html><head><meta http-equiv=\"refresh\" content=\"0; URL='$url'\" /></head></html>";
-}
-
-CheckLogin();
+$loginHelper = new LoginHelper();
+$loginHelper->CheckLogin();
 ?>
 
 <!DOCTYPE html>
