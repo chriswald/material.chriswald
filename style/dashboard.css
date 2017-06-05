@@ -1,0 +1,95 @@
+html, body, p, div {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.card {
+    border-radius: 2px 2px 2px 2px;
+    -moz-border-radius: 2px 2px 2px 2px;
+    -webkit-border-radius: 2px 2px 2px 2px;
+
+    -webkit-box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.3);
+    -moz-box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.3);
+    box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.3);
+}
+
+.center {
+    margin: auto;
+}
+
+.dashboard-control {
+    padding-right: .5em;
+    padding-left: .5em;
+
+    max-width: 80%;
+}
+
+.dashboard-form {
+    font-size: 1em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+
+    font-family: "Roboto Mono", monospace;
+    background-color: #F7F7F7;
+}
+
+.dashboard-form input, p{
+    font-family: inherit;
+    font-size: 1em;
+}
+
+.dashboard-row {
+    padding: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+}
+
+.dashboard-header {
+    padding: 1em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.dashboard-label {
+    flex-grow: 1;
+}
+
+.dashboard-value {
+    flex-grow: 1;
+}
+
+.right {
+    text-align: right;
+}
+
+.dashboard-input {
+    width: 100%;
+    height: 2em;
+    border: 1px solid #C8C8C8;
+}
+
+.dashboard-button {
+    background-color:#3bb2ff;
+    background: -moz-linear-gradient(45deg, #3bb2ff 0%, #3bb2ff 100%); /* ff3.6+ */
+    background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, #3bb2ff), color-stop(100%, #3bb2ff)); /* safari4+,chrome */
+    background: -webkit-linear-gradient(45deg, #3bb2ff 0%, #3bb2ff 100%); /* safari5.1+,chrome10+ */
+    background: -o-linear-gradient(45deg, #3bb2ff 0%, #3bb2ff 100%); /* opera 11.10+ */
+    background: -ms-linear-gradient(45deg, #3bb2ff 0%, #3bb2ff 100%); /* ie10+ */
+    background: linear-gradient(45deg, #3bb2ff 0%, #3bb2ff 100%); /* w3c */
+
+    -moz-border-radius:2px;
+    -webkit-border-radius:2px;
+    border-radius:2px;
+    border: 1px solid #0FA0FF;
+
+    color: white;
+    cursor:pointer;
+    text-decoration: none;
+
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
