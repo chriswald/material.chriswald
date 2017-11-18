@@ -42,13 +42,16 @@
                     <input id="login-password" type="password" name="password" placeholder="Password" class="login-input">
                 </div>
                 <div class="login-row hidden">
-                    <input id="success-url" type="text" name="successURL" class="login-input" value=<? echo "\"" . $SUCCESS_URL . "\""; ?>>
+                    <input id="success-url" type="text" name="successURL" class="login-input" value=<? echo "\"$SUCCESS_URL\""; ?>>
                 </div>
                 <div class="login-row hidden">
-                    <input id="failure-url" type="text" name="failureURL" class="login-input" value=<? echo "\"" . $FAILURE_URL . "\""; ?> >
+                    <input id="failure-url" type="text" name="failureURL" class="login-input" value=<? echo "\"$FAILURE_URL\""; ?> >
                 </div>
                 <div class="login-row">
                     <input id="login-submit" type="submit" name="btnSubmit" value="Submit" class="login-input login-button" onsubmit="return false;">
+                </div>
+                <div class="login-row text-center">
+                    <a href="./createuser">New to the site? Sign up</a>
                 </div>
             </form>
         </div>
