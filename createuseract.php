@@ -1,6 +1,8 @@
 <?php
 
 include_once "./cookie.php";
+include_once "./recaptchalib.php";
+include_once "./recaptchasecret.php";
 
 function APIRequest($service, $data)
 {
@@ -15,6 +17,17 @@ function APIRequest($service, $data)
 
     $context = stream_context_create($options);
     return file_get_contents($url, false, $context);
+}
+
+function VerifyCaptcha()
+{
+    $reCaptcha = new ReCaptcha($GLOBALS["ReCaptchaSecret"]);
+    $response = $reCaptcha->verifyResponse(
+        $_SERVER["REMOTE_ADDR"],
+        $_POST["g-recaptcha-response"]
+    );
+
+    return ($response != null && $response->success);
 }
 
 function CreateUser()
@@ -36,6 +49,11 @@ function CreateUser()
     {
         $success = false;
         $message = "Passwords do not match";
+    }
+    else if (!VerifyCaptcha())
+    {
+        $success = false;
+        $message = "Are you a robot?";
     }
     else
     {

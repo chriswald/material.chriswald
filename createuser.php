@@ -22,6 +22,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <link rel="stylesheet" href="./style/login.css" media="screen">
         <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+        <script src='https://www.google.com/recaptcha/api.js'></script>
     </head>
 
     <body>
@@ -52,6 +53,9 @@
                 </div>
                 <div class="login-row hidden">
                     <input id="failure-url" type="text" name="failureURL" class="login-input" value=<? echo "\"$FAILURE_URL\""; ?> >
+                </div>
+                <div class="login-row">
+                    <div class="g-recaptcha" data-sitekey="6LdiZjkUAAAAACXAE5ARjXUdInTvzEOvmvr5KtxS"></div>
                 </div>
                 <div class="login-row">
                     <input id="login-submit" type="submit" name="btnSubmit" value="Create Account" class="login-input login-button" onsubmit="return false;">
