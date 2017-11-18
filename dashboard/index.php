@@ -55,25 +55,6 @@ $loginHelper->CheckLogin();
                     </div>
                 </div>
             </div>
-            <div id="user-creation-form" class="dashboard-form card">
-                <div class="dashboard-row">
-                    <div class="dashboard-label">
-                        Create User
-                    </div>
-                </div>
-                <div class="dashboard-row">
-                    <input id="user-email" type="email" name="email" placeholder="Email address" class="dashboard-input">
-                </div>
-                <div class="dashboard-row">
-                    <input id="user-password" type="password" name="password" placeholder="Password" class="dashboard-input">
-                    <div class="right">
-                        <label for="password-expire">Expire</label><input id="password-expire" type="checkbox" name="expire" class="right"><br/>
-                    </div>
-                </div>
-                <div class="dashboard-row">
-                    <div class="dashboard-label">Foo</div>
-                </div>
-            </div>
         </div>
     </body>
 </html>
