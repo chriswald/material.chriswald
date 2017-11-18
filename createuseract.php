@@ -55,7 +55,12 @@ function CreateUser()
     }
     else
     {
-        $redirFailURL = "$redirFailURL&m=" . urlencode($message);
+        $parts = parse_url($redirFailURL);
+        parse_str($parts["query"], $query);
+        $query["m"] = $message;
+
+        $redirFailURL = "{$parts['scheme']}://{$parts['host']}{$parts['path']}";
+        $redirFailURL = "$redirFailURL?" . http_build_query($query);
         echo MakeRedirect($redirFailURL);
     }
 

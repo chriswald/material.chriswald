@@ -1,13 +1,16 @@
 <?php
     $SUCCESS_URL = (isset($_GET["r"]) ? $_GET["r"] : "https://material.chriswald.com/dashboard");
-    $FAILURE_URL = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-    if (strpos($FAILURE_URL, "?"))
+    $FAILURE_URL = (isset($_SERVER["HTTPS"]) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+    if (!isset($_GET["f"]))
     {
-        $FAILURE_URL .= "&f=1";
-    }
-    else
-    {
-        $FAILURE_URL .= "?f=1";
+        if (strpos($FAILURE_URL, "?"))
+        {
+            $FAILURE_URL .= "&f=1";
+        }
+        else
+        {
+            $FAILURE_URL .= "?f=1";
+        }
     }
 ?>
 
