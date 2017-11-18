@@ -3,6 +3,7 @@
 include_once "./cookie.php";
 include_once "./recaptchalib.php";
 include_once "./recaptchasecret.php";
+include_once "./superuserinfo.php";
 
 function APIRequest($service, $data)
 {
@@ -57,6 +58,9 @@ function CreateUser()
     }
     else
     {
+        $_POST["SuEmail"] = $GLOBALS["SuperUserEmail"];
+        $_POST["SuPassword"] = $GLOBALS["SuperUserPassword"];
+
         $response = APIRequest("auth/createuser", $_POST);
         $responseObj = json_decode($response);
         $success = $responseObj->Result;
