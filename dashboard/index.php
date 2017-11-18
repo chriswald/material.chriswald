@@ -3,7 +3,7 @@
 include_once "../loginhelper.php";
 
 $loginHelper = new LoginHelper();
-$loginHelper->CheckLogin();
+$loginHelper->CheckLogin(["9"]); // Dashboard security
 ?>
 
 <!DOCTYPE html>

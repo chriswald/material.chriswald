@@ -31,7 +31,16 @@
                 </div>
                 <?php if ($_GET["f"] == 1) { ?>
                 <div class="login-message error">
-                    Login failed
+                    <?php
+                    if (isset($_GET["m"]))
+                    {
+                        echo $_GET["m"];
+                    }
+                    else
+                    {
+                        echo "Login failed";
+                    }
+                    ?>
                 </div>
                 <?php } ?>
                 </div>
