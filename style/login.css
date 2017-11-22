@@ -4,6 +4,11 @@ html, body, p, div {
     border: 0;
 }
 
+html {
+    font-size: 1em;
+    font-family: "Roboto Mono", monospace;
+}
+
 .card {
     border-radius: 2px 2px 2px 2px;
     -moz-border-radius: 2px 2px 2px 2px;
