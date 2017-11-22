@@ -1,14 +1,19 @@
 <?php
     $SUCCESS_URL = (isset($_GET["r"]) ? $_GET["r"] : "https://material.chriswald.com/dashboard");
     $FAILURE_URL = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-    if (strpos($FAILURE_URL, "?"))
+    if (!isset($_GET["f"]))
     {
-        $FAILURE_URL .= "&f=1";
+        if (strpos($FAILURE_URL, "?"))
+        {
+            $FAILURE_URL .= "&f=1";
+        }
+        else
+        {
+            $FAILURE_URL .= "?f=1";
+        }
     }
-    else
-    {
-        $FAILURE_URL .= "?f=1";
-    }
+
+    $CREATE_USER_URL = "./createuser?r={$SUCCESS_URL}";
 ?>
 
 <!DOCTYPE html>
@@ -60,7 +65,7 @@
                     <input id="login-submit" type="submit" name="btnSubmit" value="Submit" class="login-input login-button" onsubmit="return false;">
                 </div>
                 <div class="login-row text-center">
-                    <a href="./createuser">New to the site? Sign up</a>
+                    <a href=<?php echo "\"$CREATE_USER_URL\""; ?>>New to the site? Sign up</a>
                 </div>
             </form>
         </div>

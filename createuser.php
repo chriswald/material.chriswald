@@ -12,6 +12,8 @@
             $FAILURE_URL .= "?f=1";
         }
     }
+
+    $CREATE_USER_URL = "./login?r={$SUCCESS_URL}";
 ?>
 
 <!DOCTYPE html>
@@ -59,6 +61,9 @@
                 </div>
                 <div class="login-row">
                     <input id="login-submit" type="submit" name="btnSubmit" value="Create Account" class="login-input login-button" onsubmit="return false;">
+                </div>
+                <div class="login-row text-center">
+                    <a href=<?php echo "\"$CREATE_USER_URL\""; ?>>Already have an account? Login</a>
                 </div>
             </form>
         </div>
