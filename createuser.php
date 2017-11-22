@@ -13,7 +13,8 @@
         }
     }
 
-    $CREATE_USER_URL = "./login?r={$SUCCESS_URL}";
+    $redirectURL = urlencode($SUCCESS_URL);
+    $CREATE_USER_URL = "./login?r={$redirectURL}";
 ?>
 
 <!DOCTYPE html>
