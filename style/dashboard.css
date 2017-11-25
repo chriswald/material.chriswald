@@ -69,6 +69,8 @@ html, body, p, div {
 
 .dashboard-checkbox {
     margin-right: 3em;
+    white-space: nowrap;
+    display: inline-block;
 }
 
 .right {
