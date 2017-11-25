@@ -61,6 +61,10 @@ function LoadSecurityPoints()
         data: formData
     }).done(function(data) {
         data = JSON.parse(data);
+
+        var placeholder = document.getElementById("sec-load-div");
+        placeholder.parentNode.removeChild(placeholder);
+
         for (var i = 0; i < data.length; i ++)
         {
             var id = data[i]["ID"];

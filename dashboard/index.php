@@ -68,6 +68,7 @@ $loginHelper->CheckLogin(["9"]); // Dashboard security
                     </div>
                 </div>
                 <div class="dashboard-row-no-justify" id="point-list">
+                    <div id="sec-load-div">Loading security points...</div>
                 </div>
                 <div class="dashboard-row">
                     <input id="security-submit" type="submit" name="btnSecSubmit" value="Assign Security" class="login-input login-button" onsubmit="return false;">
