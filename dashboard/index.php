@@ -55,6 +55,24 @@ $loginHelper->CheckLogin(["9"]); // Dashboard security
                     </div>
                 </div>
             </div>
+            <div id="home-connect-form" class="dashboard-form card">
+                <div class="dashboard-row">
+                    User Security
+                </div>
+                <div class="dashboard-row">
+                    <div class="dashboard-label">
+                        <p>Username</p>
+                    </div>
+                    <div class="dashboard-value">
+                        <input id="sec-username" class="dashboard-input" type="text">
+                    </div>
+                </div>
+                <div class="dashboard-row-no-justify" id="point-list">
+                </div>
+                <div class="dashboard-row">
+                    <input id="security-submit" type="submit" name="btnSecSubmit" value="Assign Security" class="login-input login-button" onsubmit="return false;">
+                </div>
+            </div>
         </div>
     </body>
 </html>

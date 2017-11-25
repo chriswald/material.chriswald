@@ -47,6 +47,12 @@ html, body, p, div {
     flex-wrap: wrap;
 }
 
+.dashboard-row-no-justify {
+    padding: 1em;
+    align-items: baseline;
+    flex-wrap: wrap;
+}
+
 .dashboard-header {
     padding: 1em;
     display: flex;
@@ -59,6 +65,10 @@ html, body, p, div {
 
 .dashboard-value {
     flex-grow: 1;
+}
+
+.dashboard-checkbox {
+    margin-right: 3em;
 }
 
 .right {

@@ -2,6 +2,10 @@ $(document).ready(
     LoadPageData
 );
 
+$(document).ready(
+    LoadSecurityPoints
+);
+
 $(function() {
     $("#refresh-link").click(function(event) {
         LoadPageData();
@@ -43,4 +47,44 @@ function getCookie(cname) {
         }
     }
     return "";
+}
+
+function LoadSecurityPoints()
+{
+    var formData = {
+        SessionToken: getCookie("SessionToken")
+    };
+
+    $.ajax({
+        type: "POST",
+        url:  "./listpoints",
+        data: formData
+    }).done(function(data) {
+        data = JSON.parse(data);
+        for (var i = 0; i < data.length; i ++)
+        {
+            var id = data[i]["ID"];
+            var name = data[i]["Name"];
+
+            var form = document.getElementById("point-list");
+            var span = document.createElement("span");
+            span.setAttribute("class", "dashboard-checkbox");
+
+            var input = document.createElement("input");
+            input.setAttribute("type", "checkbox");
+            input.setAttribute("class", "sec-checkbox");
+            input.setAttribute("id", "chkSec-"+id);
+            input.setAttribute("name", "chkSec-"+id);
+
+            var label = document.createElement("label");
+            label.setAttribute("for", "chkSec-"+id);
+            label.innerHTML = name;
+
+            form.appendChild(span);
+            span.appendChild(input);
+            span.appendChild(label);
+        }
+    }).fail(function(data) {
+
+    });
 }
