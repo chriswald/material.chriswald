@@ -28,7 +28,7 @@ function VerifyCaptcha()
         $_POST["g-recaptcha-response"]
     );
 
-    return ($response != null && $response->success);
+    return ($response != null && $response["success"]);
 }
 
 function CreateUser()

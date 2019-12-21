@@ -41,7 +41,7 @@ class ReCaptcha
 {
     private static $_signupUrl = "https://www.google.com/recaptcha/admin";
     private static $_siteVerifyUrl =
-        "https://www.google.com/recaptcha/api/siteverify?";
+        "https://www.google.com/recaptcha/api/siteverify";
     private $_secret;
     private static $_version = "php_1.0";
     /**
@@ -88,6 +88,21 @@ class ReCaptcha
         $response = file_get_contents($path . $req);
         return $response;
     }
+	
+	private function APIRequest($path, $data)
+	{
+		$options = array(
+			"http" => array(
+				"header" => "Content-type: application/x-www-form-urlencoded",
+				"method" => "POST",
+				"content" => http_build_query($data),
+			),
+		);
+
+		$context = stream_context_create($options);
+		return file_get_contents($path, false, $context);
+	}
+	
     /**
      * Calls the reCAPTCHA siteverify API to verify whether the user passes
      * CAPTCHA test.
@@ -106,24 +121,16 @@ class ReCaptcha
             $recaptchaResponse->errorCodes = 'missing-input';
             return $recaptchaResponse;
         }
-        $getResponse = $this->_submitHttpGet(
+        $getResponse = $this->APIRequest(
             self::$_siteVerifyUrl,
             array (
                 'secret' => $this->_secret,
                 'remoteip' => $remoteIp,
-                'v' => self::$_version,
                 'response' => $response
             )
         );
         $answers = json_decode($getResponse, true);
-        $recaptchaResponse = new ReCaptchaResponse();
-        if (trim($answers ['success']) == true) {
-            $recaptchaResponse->success = true;
-        } else {
-            $recaptchaResponse->success = false;
-            $recaptchaResponse->errorCodes = $answers [error-codes];
-        }
-        return $recaptchaResponse;
+        return $answers;
     }
 }
 ?>
